@@ -38,12 +38,18 @@ addItems.style.fontWeight = 'bold';
 addItems.style.color='green';
 
 let items = document.getElementsByClassName('list-group-item');
-// console.log(items);
+//  console.log(items);
 // console.log(items[1]);
 // items[1].textContent='Hello 2';
 // items[1].style.fontWeight='bold';
-items[2].style.backgroundColor='green';
+// items[2].style.backgroundColor='green';
 
-for(let i=0; i<items.length;i++){
-    items[i].style.fontWeight='bold';
+// for(let i=0; i<items.length;i++){
+//     items[i].style.fontWeight='bold';
+// }
+
+let li=document.getElementsByTagName('li');
+for(let i=0; i<li.length;i++){
+    li[i].style.fontWeight='bold';
+    li[i].style.backgroundColor='#f4f4f4';
 }
