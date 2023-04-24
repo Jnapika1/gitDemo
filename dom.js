@@ -17,10 +17,10 @@
 
 // console.log(document.getElementById('header-title'));
 
-let headerTitle = document.getElementById('header-title');
-let header = document.getElementById('main-header');
-let addItems = document.getElementById('add-items');
-// console.log(headerTitle);
+// let headerTitle = document.getElementById('header-title');
+// let header = document.getElementById('main-header');
+// let addItems = document.getElementById('add-items');
+// // console.log(headerTitle);
 // headerTitle.textContent="Hello";
 // headerTitle.innerText='Goodbye';
 
@@ -32,13 +32,13 @@ let addItems = document.getElementById('add-items');
 
 // headerTitle.innerHTML='<h3>Hello</h3>';
 
-header.style.borderBottom='solid 3px black';
+// header.style.borderBottom='solid 3px black';
 
-addItems.style.fontWeight = 'bold';
-addItems.style.color='green';
+// addItems.style.fontWeight = 'bold';
+// addItems.style.color='green';
 
-let items = document.getElementsByClassName('list-group-item');
-//  console.log(items);
+// let items = document.getElementsByClassName('list-group-item');
+// //  console.log(items);
 // console.log(items[1]);
 // items[1].textContent='Hello 2';
 // items[1].style.fontWeight='bold';
@@ -48,8 +48,31 @@ let items = document.getElementsByClassName('list-group-item');
 //     items[i].style.fontWeight='bold';
 // }
 
-let li=document.getElementsByTagName('li');
-for(let i=0; i<li.length;i++){
-    li[i].style.fontWeight='bold';
-    li[i].style.backgroundColor='#f4f4f4';
+// let li=document.getElementsByTagName('li');
+
+// for(let i=0; i<li.length;i++){
+//     li[i].style.fontWeight='bold';
+//     li[i].style.backgroundColor='#f4f4f4';
+// }
+
+// QuerySelector //
+
+let header = document.querySelector('#main-header');
+header.style.borderBottom='solid 4px #ccc';
+
+let submit = document.querySelector('input[type="submit"]');
+submit.value="SEND";
+
+let secondItem = document.querySelector('.list-group-item:nth-child(2)');
+secondItem.style.backgroundColor="green";
+
+let thirdItem = document.querySelector('.list-group-item:nth-child(3)');
+thirdItem.style.visibility="hidden";
+
+let li = document.querySelectorAll('li');
+li[1].style.color = 'white';
+
+let odd = document.querySelectorAll('li:nth-child(odd)');
+for(let i=0;i<odd.length;i++){
+    odd[i].style.backgroundColor="#f4f4f4";
 }
