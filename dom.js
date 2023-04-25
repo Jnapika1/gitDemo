@@ -57,22 +57,71 @@
 
 // QuerySelector //
 
-let header = document.querySelector('#main-header');
-header.style.borderBottom='solid 4px #ccc';
+// let header = document.querySelector('#main-header');
+// header.style.borderBottom='solid 4px #ccc';
 
-let submit = document.querySelector('input[type="submit"]');
-submit.value="SEND";
+// let submit = document.querySelector('input[type="submit"]');
+// submit.value="SEND";
 
-let secondItem = document.querySelector('.list-group-item:nth-child(2)');
-secondItem.style.backgroundColor="green";
+// let secondItem = document.querySelector('.list-group-item:nth-child(2)');
+// secondItem.style.backgroundColor="green";
 
-let thirdItem = document.querySelector('.list-group-item:nth-child(3)');
-thirdItem.style.visibility="hidden";
+// let thirdItem = document.querySelector('.list-group-item:nth-child(3)');
+// thirdItem.style.visibility="hidden";
 
-let li = document.querySelectorAll('li');
-li[1].style.color = 'white';
+// let li = document.querySelectorAll('li');
+// li[1].style.color = 'white';
 
-let odd = document.querySelectorAll('li:nth-child(odd)');
-for(let i=0;i<odd.length;i++){
-    odd[i].style.backgroundColor="#f4f4f4";
-}
+// let odd = document.querySelectorAll('li:nth-child(odd)');
+// for(let i=0;i<odd.length;i++){
+//     odd[i].style.backgroundColor="#f4f4f4";
+// }
+
+// Modifying DOM using nodes
+
+let itemList = document.querySelector('#items');
+
+// console.log(itemList.parentNode.parentNode.parentNode);
+// console.log(itemList.parentElement);
+itemList.parentElement.style.backgroundColor="#f4f4f4";
+
+// childnodes
+// console.log(itemList.childNodes);
+// console.log(itemList.children);
+// console.log(itemList.children[1]);
+// itemList.children[1].style.backgroundColor='yellow';
+console.log(itemList.firstChild);
+console.log(itemList.firstElementChild);
+itemList.firstElementChild.textContent='Hello 1';
+console.log(itemList.lastChild);
+console.log(itemList.lastElementChild);
+itemList.lastElementChild.textContent="Hello 4";
+
+// nextsibling
+console.log(itemList.nextSibling);
+console.log(itemList.nextElementSibling);
+console.log(itemList.previousSibling);
+console.log(itemList.previousElementSibling);
+
+// create Element
+let newDiv = document.createElement('div');
+newDiv.className='hello';
+newDiv.id='hello1';
+newDiv.setAttribute('title', 'Hello Div');
+
+let newDivText = document.createTextNode('Hello World');
+newDiv.appendChild(newDivText);
+
+let container = document.querySelector('header .container');
+let h1 = document.querySelector('header h1');
+
+container.insertBefore(newDiv, h1);
+
+let newDiv1 = document.createElement('div');
+
+let newDivText1 = document.createTextNode('Hello');
+newDiv1.appendChild(newDivText1);
+let main = document.querySelector('div .list-group');
+let item1 = document.querySelector('div li');
+main.insertBefore(newDiv1, item1);
+// console.log(newDiv);
