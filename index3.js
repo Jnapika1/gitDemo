@@ -31,9 +31,15 @@ function showObjOnScreen(obj){
     ul.appendChild(li);
 
     let del = document.createElement('button');
-    del.className="btn btn-danger btn-sm float-right delete";
+    del.className="btn btn-danger btn-sm delete";
     del.appendChild(document.createTextNode("delete"));
     li.appendChild(del);
+
+    let edit = document.createElement('button');
+    edit.type="button";
+    edit.className="btn btn-secondary btn-sm float-right edit";
+    edit.appendChild(document.createTextNode("Edit"));
+    li.appendChild(edit);
 }
 
 ul.addEventListener('click', deleteItem);
@@ -41,7 +47,21 @@ function deleteItem(e){
     if(e.target.classList.contains('delete')){
         let user = e.target.parentElement;
         ul.removeChild(user);
-        console.log(user.firstChild.textContent);
+        // console.log(user.firstChild.textContent);
         localStorage.removeItem(user.firstChild.textContent);
+    }
+}
+
+ul.addEventListener('click', editItem);
+function editItem(e){
+    if(e.target.classList.contains('edit')){
+        let user = e.target.parentElement;
+        ul.removeChild(user);
+        // console.log(user.firstChild.textContent);
+        let userDetails = JSON.parse(localStorage.getItem(user.firstChild.textContent));
+        localStorage.removeItem(user.firstChild.textContent);
+        
+        nameInput.value=userDetails.name;
+        emailInput.value=userDetails.email;
     }
 }
