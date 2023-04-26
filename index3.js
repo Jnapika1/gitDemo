@@ -20,6 +20,6 @@ function onSubmit(e){
             email:emailInput.value,
         }
         let obj = JSON.stringify(myObj);
-        localStorage.setItem("myObj", obj);
+        localStorage.setItem(nameInput.value, obj);
     }
 }
