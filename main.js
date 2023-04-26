@@ -17,13 +17,15 @@ function addItem(e){
     
     // get input value
     let newItem = document.getElementById('item');
+    //get description value
+    let description = document.getElementById('description');
 
     //create new li element
     let li=document.createElement('li');
     //add class to li
     li.className='list-group-item';
     // add text node with input value
-    li.appendChild(document.createTextNode(newItem.value));
+    li.appendChild(document.createTextNode(`${newItem.value} ${description.value}`));
 
     // delete button element
     let delButton = document.createElement('button');
