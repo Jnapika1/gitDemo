@@ -65,8 +65,22 @@ function deleteItem(e){
     if(e.target.classList.contains('delete')){
         let user = e.target.parentElement;
         ul.removeChild(user);
+
+        axios.get('https://crudcrud.com/api/748a48755d0c4b27bcbde19788b5cb0a/appointmentData')
+        .then(response=>{
+            for(let i=0;i<response.data.length;i++){
+                if(response.data[i].name===user.firstChild.textContent){
+                    axios
+                    .delete(`https://crudcrud.com/api/748a48755d0c4b27bcbde19788b5cb0a/appointmentData/${response.data[i]._id}`)
+                    .catch(err=>console.log(err));
+                }
+            }
+        })
+        .catch(err=>{
+            console.log(err);
+    })
         // console.log(user.firstChild.textContent);
-        localStorage.removeItem(user.firstChild.textContent);
+        // localStorage.removeItem(user.firstChild.textContent);
     }
 }
 
