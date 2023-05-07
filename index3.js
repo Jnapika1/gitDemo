@@ -78,7 +78,7 @@ function deleteItem(e){
         })
         .catch(err=>{
             console.log(err);
-    })
+        })
         // console.log(user.firstChild.textContent);
         // localStorage.removeItem(user.firstChild.textContent);
     }
@@ -89,11 +89,27 @@ function editItem(e){
     if(e.target.classList.contains('edit')){
         let user = e.target.parentElement;
         ul.removeChild(user);
+
+        axios.get('https://crudcrud.com/api/748a48755d0c4b27bcbde19788b5cb0a/appointmentData')
+        .then(response=>{
+            for(let i=0;i<response.data.length;i++){
+                if(response.data[i].name===user.firstChild.textContent){
+                    nameInput.value=response.data[i].name;
+                    emailInput.value=response.data[i].email;
+                    axios
+                    .delete(`https://crudcrud.com/api/748a48755d0c4b27bcbde19788b5cb0a/appointmentData/${response.data[i]._id}`)
+                    .catch(err=>console.log(err));
+                }
+            }
+        })
+        .catch(err=>{
+            console.log(err);
+        })
         // console.log(user.firstChild.textContent);
-        let userDetails = JSON.parse(localStorage.getItem(user.firstChild.textContent));
-        localStorage.removeItem(user.firstChild.textContent);
+        // let userDetails = JSON.parse(localStorage.getItem(user.firstChild.textContent));
+        // localStorage.removeItem(user.firstChild.textContent);
         
-        nameInput.value=userDetails.name;
-        emailInput.value=userDetails.email;
+        // nameInput.value=userDetails.name;
+        // emailInput.value=userDetails.email;
     }
 }
