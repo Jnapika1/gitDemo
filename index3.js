@@ -4,7 +4,18 @@ const nameInput = document.querySelector('#fname');
 const emailInput = document.querySelector('#email');
 const ul=document.getElementById("list-group");
 
-
+window.addEventListener('DOMContentLoaded', ()=>{
+    axios.get('https://crudcrud.com/api/748a48755d0c4b27bcbde19788b5cb0a/appointmentData')
+    .then(response=>{
+        for(let i=0;i<response.data.length;i++){
+            showObjOnScreen(response.data[i]);
+        }
+        console.log(response);
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+})
 
 myForm.addEventListener('submit', onSubmit);
 
